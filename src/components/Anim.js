@@ -56,28 +56,29 @@ const Anim = () => {
       });
     
       var sceneries = [fgAnim1, fgAnim2, bgAnim1, bgAnim2];
-    
+      
       var adjustBackgroundPlayback = function() {
-        if (redQueenAnim.playbackRate < .8) {
+        if (redQueenAnim().playbackRate < .8) {
           sceneries.forEach(function(anim) {
-            anim.playbackRate = redQueenAnim.playbackRate/2 * -1;
+            anim().playbackRate = redQueenAnim().playbackRate/2 * -1;
           });
-        } else if (redQueenAnim.playbackRate > 1.2) {
+        } else if (redQueenAnim().playbackRate > 1.2) {
           sceneries.forEach(function(anim) {
-            anim.playbackRate = redQueenAnim.playbackRate/2;
+            anim().playbackRate = redQueenAnim().playbackRate/2;
           });
         } else {
           sceneries.forEach(function(anim) {
-            anim.playbackRate = 0;    
+            anim().playbackRate = 0;    
           });
         }   
       }
-      adjustBackgroundPlayback();
+      
+      setInterval(adjustBackgroundPlayback, 4000)
     
       setInterval( function() {
         /* Set decay */
-        if (redQueenAnim().playbackRate > .4) {
-          redQueenAnim().playbackRate *= .9;    
+        if (redQueenAnim.playbackRate > .4) {
+          redQueenAnim.playbackRate *= .9;    
         } 
         adjustBackgroundPlayback();
       }, 3000);
@@ -92,7 +93,7 @@ const Anim = () => {
         document.addEventListener("click", goFaster);
         document.addEventListener("touchstart", goFaster);
       }, [])
-
+  
       
 
     return (
