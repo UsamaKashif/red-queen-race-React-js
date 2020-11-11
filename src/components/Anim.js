@@ -73,16 +73,18 @@ const Anim = () => {
         }   
       }
       
-      setInterval(adjustBackgroundPlayback, 4000)
-    
+      setInterval(() => {
+        adjustBackgroundPlayback()
+      }, 3000)
+    //   adjustBackgroundPlayback()
       setInterval( function() {
         /* Set decay */
-        if (redQueenAnim.playbackRate > .4) {
-          redQueenAnim.playbackRate *= .9;    
+        if (redQueenAnim().playbackRate > .4) {
+          redQueenAnim().playbackRate *= .9;    
         } 
         adjustBackgroundPlayback();
       }, 3000);
-
+    //   adjustBackgroundPlayback()
       var goFaster = function() {
         /* But you can speed them up by giving the screen a click or a tap. */
         redQueenAnim().playbackRate *= 1.1;
